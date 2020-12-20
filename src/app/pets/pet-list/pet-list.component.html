@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-3">
+        <p>Category <select [(ngModel)]="params.filter.category" (change)="refreshList()">
+            <option value="">All</option>
+            <option value="cat">Cats</option>
+            <option value="dog">Dogs</option>
+            <option value="other">Other</option>
+        </select></p>
+    </div>
+    <div class="col-3">
+        <p>Sex:
+            <small>Any</small><input type="radio" name="any" value='' [(ngModel)]="params.filter.sex" (change)="refreshList()">
+            <small>Female</small><input type="radio" name="female" value="f" [(ngModel)]="params.filter.sex" (change)="refreshList()">
+            <small>Male</small><input type="radio" name="male" value="m" [(ngModel)]="params.filter.sex" (change)="refreshList()">
+        </p>
+    </div>  
+    <div class="col-1">
+
+    </div>    
+    <div class="col-3">
+        <p>Sort by: 
+            <select [(ngModel)]="params.sort" (change)="refreshList()">
+                <option>---</option>
+                <option value="name">Name</option>
+                <option value="size">Size</option>
+            </select>
+        </p>
+    </div>  
+</div>
+<div class="row">
+    
+    <div class="card" style="width: 18rem;margin-right:5px;padding:3px" *ngFor="let pet of pets">
+        <a [routerLink]="[pet._id]" style="text-decoration: none;color:black">
+        <img class="card-img-top" style="height:18em" src="{{pet.image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">{{pet.name}}</h5>
+          <p class="card-text">Category:{{pet.category.charAt(0).toUpperCase().concat(pet.category.slice(1))}} <span class="float-right">Size:{{pet.size_kg}} kg</span></p>
+          <p class="card-text">Sex:<span *ngIf="pet.sex=='m'">Male</span><span *ngIf="pet.sex=='f'">Female</span></p>
+        </div>
+    </a>
+      </div>
+</div>

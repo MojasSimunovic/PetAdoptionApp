@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pet Id</th>
+            <th>Pet Name</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let adoption of adoptions">
+            <td>{{adoption.petId}}</td>
+            <td>{{adoption.petName}}</td>
+            <td>{{adoption.name}}</td>
+            <td>{{adoption.contact}}</td>
+            <td><button class="btn btn-primary" type="button" (click)="removeAdoption(adoption._id)">Approve</button></td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" (click)="resetList()">Reset All</button>

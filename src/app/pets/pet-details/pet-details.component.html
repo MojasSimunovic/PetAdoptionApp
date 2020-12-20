@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-5">
+                <img src="{{pet.image}}">
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4">
+                <h4>{{pet.name}}</h4>
+                <p>Category: {{pet.category}}</p>
+                <p>Sex: <span *ngIf="pet.sex=='f'">Female</span><span *ngIf="pet.sex=='m'">Male</span></p>
+                <p>Size: {{pet.size_kg}}kg</p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-10">
+                {{pet.story}}
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <h4 style="text-align:center;font-weight:bold;">Adopt</h4>
+       <form [formGroup]="adoptionForm" (submit)="onSubmit()">
+            <input class="form-control" formControlName="name" type="text" placeholder="Enter your full name">
+            <small class="text-danger" *ngIf="adoptionForm.controls.name.touched && adoptionForm.controls.name.errors?.required">Name is required</small><br>
+            <input class="form-control" formControlName="contact" type="text" placeholder="Enter your contact info">
+            <small class="text-danger" *ngIf="adoptionForm.controls.contact.touched && adoptionForm.controls.name.errors?.required">Contact is required</small><br>
+            <button type="submit" class="btn btn-primary float-right" [disabled]="adoptionForm.invalid">Submit request</button>
+       </form>
+    </div>
+</div>
